@@ -3,10 +3,17 @@ import random
 import discord
 from discord.ext import commands
 import logging
+import sys
 
 #####################################
 JENKINS_TEST = "INAINTE DE MODIFICARE"
 #####################################
+
+if len(sys.argv) < 2:
+    sys.exit(1)
+    
+bot_token = sys.argv[1]
+
 
 # its set to INFO and its annoying
 logging.getLogger('discord.client').setLevel(logging.WARNING)
@@ -44,8 +51,7 @@ async def joke(ctx):
 async def jenkins_test(ctx):
     now = datetime.now()
     current_time = now.strftime("%H:%M")
-    random_index = random.randint(0, 2)
     print(f'{current_time} - {JENKINS_TEST}')
     await ctx.send(JENKINS_TEST)
 
-bot.run("OTE4MTA2NDQ1Nzk3NTU2MjQ1.Guioyc.ezor-HUpNQZ37Gm5Nh4Ql8BEXOHv6yL7gKonD4")
+bot.run(bot_token)
